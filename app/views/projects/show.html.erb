@@ -1,4 +1,28 @@
-<h1><%= @project.name %></h1>
-<p>Project details coming soon...</p>
+<h2 class="text-xl font-semibold text-gray-800 mb-4">Todos for this project</h2>
 
+<ul class="space-y-2">
+  <% @project.todos.each do |todo| %>
+    <li class="bg-white p-4 shadow rounded flex items-center justify-between">
+      <span><%= todo.name %></span>
+      <% if todo.completed %>
+        <span class="text-green-500 font-bold">✅ Done</span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Original Code -->
+<h1><%= @project.name %></h1>
+
+<ul>
+  <% @project.todos.each do |todo| %>
+    <li>
+      <%= link_to todo.name, todo_path(todo) %>
+      <% if todo.completed %>✅<% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "Edit Project", edit_project_path %>
+<%= link_to "Back to Projects", projects_path %>
 <%= button_to "Delete Project", project_path(@project), method: :delete %>
