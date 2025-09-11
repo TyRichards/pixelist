@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
 
   # Strong Parameters (The New Way)
   def project_params
-    params.expect(project: [:name])
+    params.expect(project: [ :name ])
   end
 
   # Strong Parameters (The Old Way)
